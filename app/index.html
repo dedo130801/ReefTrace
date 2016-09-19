@@ -1,0 +1,39 @@
+<html>
+<head>
+	<script   src="https://code.jquery.com/jquery-3.1.0.js"   integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   crossorigin="anonymous"></script>
+
+</head>
+<body>
+	
+	<h1>Menu</h1>
+	<ul id="main_menu">
+	</ul>
+
+	<div>
+		<label for="username">Username: </label>
+		<input id="username" type="text">
+		<label for="password">Password: </label>
+		<input id="password" type="password">
+		<button id="login" type="button">Login</button>
+	</div>
+	<div id="contenido"></div>
+<script>
+$("#login").click(function () {
+//var user = "{username:'admin',password:'password'}";
+//var jsonData = JSON.parse(user);
+$.ajax({
+	  	url: "http://localhost/ReefTrace/test/user/login",
+	  	type: "POST",
+	  	//datatype:'json',
+	  	contentType: "application/json",
+	  	data:"{username:'admin',password:'password'}",
+	  	success: function(data){alert(data);}
+	}).done(function(data) {
+  		alert(data);
+  		$("#contenido").append(data);
+	});
+
+});
+</script>
+</body>
+</html>
