@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		
+		<title></title>
+
+		<script   src="https://code.jquery.com/jquery-3.1.0.js"   integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(
+
+				function () {
+				
+					alert("hola");
+		
+					$.ajax({
+						url: "http://www.reeftrace.local/aquariums",
+						method: "get"    
+					}).done(
+						function(data) {
+							var ulNode = $("#main_menu");
+							$.map(data.aquariums, 
+								function(v,i){
+									ulNode.append("<li>"+v.aquarium.title+"</li>");
+								}
+							);
+						}
+					);
+
+
+				} 	
+			
+
+			);
+
+		</script>
+
+	</head>
+
+	<body>
+
+	<div id="main_menu">
+	</div>
+
+
+	</body>
+
+</html>
